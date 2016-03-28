@@ -1,0 +1,4 @@
+yum install firewalld
+firewall-cmd state
+systemctl restart firewalld
+
