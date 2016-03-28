@@ -15,5 +15,5 @@ To see what ports SELinux is using for SSH we can run the option command: semana
 You should see port 22 listed and we are not going to change that. To add a new port type the following command: semanage port -a -t ssh_port_t -p tcp 2222
 
 Now lets check to see if your computer is listening on the new port. Type in the command netstat command again to verify your computer is listening on port 2222: netstat -tulpn
-Although your computer is listening to the port, the firewall may still be blocking traffic to it. In CentOS 7 Minimal the default firewall is the firewalld service. To allow traffic from port 2222 in issue the following command: firewall-cmd --permanent --add-port=2222/tcp
+Although your computer is listening to the port, the firewall may still be blocking traffic to it. In CentOS 7 Minimal the default firewall is the firewalld service. To allow traffic from port 2222 in issue the following command: firewall-cmd --add-port=2222/tcp; firewall-cmd --permanent --add-port=2222/tcp
 Now test your server to see if you can access it using SSH and port 2222.
