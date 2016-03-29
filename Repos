@@ -1,0 +1,18 @@
+epel：
+参考：https://support.rackspace.com/how-to/install-epel-and-additional-repositories-on-centos-and-red-hat/
+以及：http://www.tecmint.com/how-to-enable-epel-repository-for-rhel-centos-6-5/
+
+按照第一个链接，输入：
+sudo yum install epel-release
+成功！
+
+按照第二个链接，输入：
+yum repolist
+报告：
+epel/x86_64 Extra Packages for Enterprise Linux 7 - x86_64    9,697
+
+
+
+
+
+
