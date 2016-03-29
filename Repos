@@ -11,6 +11,11 @@ yum repolist
 报告：
 epel/x86_64 Extra Packages for Enterprise Linux 7 - x86_64    9,697
 
+Coprs//librehat：
+参考：https://copr.fedorainfracloud.org/coprs/librehat/
+sudo wget https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/repo/epel-7/librehat-shadowsocks-epel-7.repo -O /etc/yum.repos.d/
+接着：
+yum install shadowsocks-libev
 
 
 
