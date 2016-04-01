@@ -1,0 +1,41 @@
+一、设置装有 CentOS7 的笔记本合盖后黑屏进入睡眠模式 
+
+systemd 能够处理某些电源相关的 ACPI事件，你可以通过从 /etc/systemd/logind.conf 以下选项进行配置：　　 
+HandlePowerKey            按下电源键后的行为 
+HandleSleepKey            按下挂起键后的行为 
+HandleHibernateKey        按下休眠键后的行为     
+HandleLidSwitch             Triggered when the lid is closed, except in the cases below 
+HandleLidSwitchDocked        Triggered when the lid is closed if the system is inserted in a docking station(扩展坞), or more than one display is connected 
+ 
+行为可以是 ignore、poweroff、reboot、halt、suspend、hibernate、hybrid-sleep、lock 或 kexec。 
+ 
+系统默认设置为： 
+ 
+HandlePowerKey=poweroff 
+HandleSuspendKey=suspend 
+HandleHibernateKey=hibernate 
+HandleLidSwitch=suspend 
+HandleLidSwitchDocked=ignore 
+LidSwitchIgnoreInhibited=yes 
+ 
+只需要把 HandleLidSwitchDocked 选项设置为如下即可： 
+HandleLidSwitchDocked=lock/suspend 
+ 
+注意：设置完成保存后运行 systemctl restart systemd-logind.service 命令使设置生效。 
+
+halt　　　　　　        挂起 
+suspend　　　　　　　　    suspend为shell内建指令，可暂停目前正在执行的shell。若要恢复，则必须使用SIGCONT信息。所有的进程都会暂停，但不是消失（halt是进程关闭） 
+sleep　　　　　　　　　　    睡眠时硬盘关闭，内存处于活动状态，CPU处于半活动状态，系统状态保存在内存中，当系统被激活（动下Mouse，或者键盘上的Key），系统马上回到睡眠前的状态 
+hibernate　　　　　　　　　    休眠主要是为笔记本设计的功能，当你选择休眠时系统会把内存里的所有数据存放在硬盘上（默认C:\hiberfil.sys），然后就是关机的流程了，当你下次打开电脑时，系统会把之前存放的文件再读回到内存，这样你就回到了休眠前的状态了（如哪些程序和窗口是开着的） 
+hybrid-sleep　　　　　　　    混合睡眠，主要是为台式机设计的，是睡眠和休眠的结合体，当你选择Hybird时，系统会像休眠一样把内存里的数据从头到尾复制到硬盘里 （C:\hiberfil.sys），然后进入睡眠状态，即内存和CPU还是活动的，其他设置不活动，这样你想用电脑时就可以快速恢复到之前的状态了，笔记本一般不用这个功能。 
+lock 
+kexec　　　　　　　　    linux的一种重启系统的方式，不检测硬件 
+
+参考 
+https://wiki.archlinux.org/index.php/Power_management                详解（推荐） 
+http://www.thinkwiki.org/wiki/How_to_reduce_power_consumption            reduce power consumption 
+http://wwwtt0401.blog.163.com/blog/static/3614930620116615955930/        Sleep，Hibernate and Hybrid   
+http://www.bkjia.com/Linuxjc/964474.html                    本文的模板 
+http://jingyan.baidu.com/article/3065b3b6cc19f6becef8a476.html            windows 电脑休眠和睡眠的区别 
+http://blog.sina.com.cn/s/blog_406be8d10100nmh7.html                阻塞（pend）与挂起（suspend）的区别 
+http://baike.baidu.com/view/1436072.htm                        suspend 百科
