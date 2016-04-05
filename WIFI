@@ -1,0 +1,6 @@
+Centos的wifi设置比较麻烦，找到几篇网文参考，先列在这里，有空再试
+Setting up wireless on a new install on a laptop：https://www.centos.org/forums/viewtopic.php?t=8205
+hidden ssid with auth via wpa2/psk：https://www.centos.org/forums/viewtopic.php?t=26922
+How to connect to a WPA/WPA2 WiFi network using Linux command line：http://linuxcommando.blogspot.com/2013/10/how-to-connect-to-wpawpa2-wifi-network.html
+Connect to WiFi network from command line in Linux：http://www.blackmoreops.com/2014/09/18/connect-to-wifi-network-from-command-line-in-linux/
+Connect to hidden Wifi AP with wpa-supplicant? http://unix.stackexchange.com/questions/48431/connect-to-hidden-wifi-ap-with-wpa-supplicant
