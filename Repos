@@ -17,7 +17,5 @@ sudo wget https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/repo/epel
 接着：
 yum install shadowsocks-libev
 
-
-
-
-
+建立快速源：
+yum makecache fast
